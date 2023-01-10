@@ -1,0 +1,20 @@
+{
+  "name": "storagewipe",
+  "version": "1.0.0",
+  "description": "storage detect and wipe with nist standard",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "webnevisan (Amirali Tavakoli)",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.0.0"
+  },
+  "dependencies": {
+    "js": "^0.1.0",
+    "node": "^16.19.0",
+    "systeminformation": "^5.17.3"
+  }
+}

@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    background-color: #1C1F2B !important;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    text-decoration: none;
+}
+
+#container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#header {
+    display: flex;
+    position: absolute;
+    left: 37%;
+    top: 15px;
+}
+
+
+#appName {
+    color: #fff;
+}
+
+
+.devices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: auto;
+    position: absolute;
+    top: 10px;
+    left: 75px;
+    text-align: center;
+    gap: 5px;
+}
+.device {
+    width: 125px;
+    flex-wrap: wrap;
+    border: solid 1px #99caff;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+
+.device:hover {
+    cursor: crosshair;
+    -ms-zoom-animation: default;
+    transition-duration: 100ms;
+}
+
+.captions {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.device_icon {
+    width: 55px;
+    padding-top: 5px;
+}
+
+.disk_name {
+    margin: 0;
+    font-weight: 500;
+}
+
+.test {
+    flex-direction: row;
+}
