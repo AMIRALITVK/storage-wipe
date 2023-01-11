@@ -7,7 +7,7 @@ let Dev_Mode = true;
 let mainWindow = null;
 
 app.setLoginItemSettings({
-  openAtLogin: true,
+  openAtLogin: false,
 });
 
 function createWindow() {

@@ -29,25 +29,25 @@ body {
     top: 15px;
 }
 
-
 #appName {
     color: #fff;
 }
 
-
-.devices {
+#devices {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     overflow: auto;
     position: absolute;
-    top: 10px;
+    top: 30px;
     left: 75px;
     text-align: center;
     gap: 5px;
 }
+
 .device {
-    width: 125px;
+    width: 270px;
+    height: fit-content;
     flex-wrap: wrap;
     border: solid 1px #99caff;
     border-radius: 10px;
@@ -67,14 +67,62 @@ body {
     font-weight: 600;
     margin-top: 10px;
 }
+
 .device_icon {
     width: 55px;
     padding-top: 5px;
 }
 
-.disk_name {
+#device_space {
     margin: 0;
     font-weight: 500;
+}
+
+
+#checkCpu {
+    position: absolute;
+    right: 75px;
+    top: 35px;
+    width: 100px;
+    color: #99caff;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 5px;
+    background-color: transparent;
+    border: solid 2px #99caff;
+    border-radius: 12px;
+}
+
+#device_info {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    margin-right: 25px;
+    width: 65%;
+    height: 80%;
+    background-color: #bcbcbc4d;
+    border-top: solid 1px #99caff;
+    border-radius: 10px;
+
+}
+
+#infos {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    /* right: auto; */
+    color: #fff;
+
+}
+
+#infos ul {
+    padding-left: 0 !important;
 }
 
 .test {

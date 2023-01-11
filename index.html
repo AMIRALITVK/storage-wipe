@@ -17,49 +17,17 @@
           <h4 class="text-info">Storages Tools</h4>
         </div>
       </section>
-      <section id="devices">
-        <div class="devices">
-          <div class="device">
-            <img class="device_icon" src="./src/hdd.png" alt="" />
-            <caption>
-              <p class="captions">HDD</p>
-              <p class="text-info disk_name">Disk 0</p>
-              <p class="text-light disk_size">250 G</p>
-            </caption>
-            <button id="checkCpu">press</button>
-          </div>
-          <div class="device">
-            <img class="device_icon" src="./src/ssd.png" alt="" />
-            <caption>
-              <p class="captions">SSD</p>
-              <p class="text-info disk_name">Disk 1</p>
-              <p class="text-info disk_size">512 G</p>
-            </caption>
-          </div>
-          <div class="device">
-            <img class="device_icon" src="./src/flash.png" alt="" />
-            <caption>
-              <p class="captions">FLASHDRIVE</p>
-              <p class="text-info disk_name">Disk 2</p>
-              <p class="text-info disk_size">1 T</p>
-            </caption>
-          </div>
-          <div class="device">
-            <img class="device_icon" src="./src/hdd.png" alt="" />
-            <caption>
-              <p class="captions">HDD</p>
-              <div class="test">
-                <p class="text-info disk_name">Disk 3</p>
-                <p class="text-light disk_size">255 G</p>
-              </div>
-            </caption>
-          </div>
-        </div>
-        <div class="devices"></div>
-        <div class="devices"></div>
-      </section>
+      <button id="checkCpu">SCAN</button>
+      <!-- <button id="log" class="text-light" style="width: 100px;">LOG</button> -->
+      <div id="devices">
+      </div>
     </section>
-    <hr class="text-info" />
+    <section id="device_info">
+      <h3 class="text-light text-center pt-3">Device Info</h3>
+      <div id="infos">
+        
+      </div>
+    </section>
   </body>
   <script>
     if (typeof module === "object") {
