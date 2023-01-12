@@ -116,6 +116,8 @@ body {
     text-align: center;
     position: relative;
     top: 30px;
+    font-size: 25px;
+    font-weight: 600;
     /* right: auto; */
     color: #fff;
 
@@ -124,6 +126,38 @@ body {
 #infos ul {
     padding-left: 0 !important;
 }
+
+#format {
+    position: absolute;
+    right: 25px;
+    bottom: 50px;
+    width: fit-content;
+    height: 50px;
+    color: #fbff00;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 5px;
+    background-color: transparent;
+    border: solid 2px #fbff00;
+    border-radius: 12px;
+}
+
+#wipe {
+    position: absolute;
+    right: 150px;
+    bottom: 50px;
+    width: fit-content;
+    height: 50px;
+    color: #fc3a3a;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px 5px;
+    background-color: transparent;
+    border: solid 2px #fc3a3a;
+    border-radius: 12px;
+}
+
+
 
 .test {
     flex-direction: row;

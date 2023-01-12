@@ -13,8 +13,10 @@
     "electron": "^22.0.0"
   },
   "dependencies": {
+    "jquery": "^3.6.3",
     "js": "^0.1.0",
     "node": "^16.19.0",
+    "node-powershell": "^5.0.1",
     "systeminformation": "^5.17.3"
   }
 }

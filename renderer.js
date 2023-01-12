@@ -1,11 +1,14 @@
 const DevMode = true;
 const { remote, ipcRenderer } = require("electron");
-const { BrowserWindow } = require("electron/main");
+const { BrowserWindow } = require("electron/renderer");
 const si = require("systeminformation");
+const { $ } = require("jquery");
+const { PowerShell } = require("node-powershell/dist/PowerShell");
 const check = document.getElementById("checkCpu");
 let devices_item = document.getElementById("devices");
-// const log = document.getElementById("log");
 let devices = [];
+
+// const log = document.getElementById("log");
 // const win = remote.getCurrentWindow();
 
 const data_size = (bytes) => {
@@ -38,38 +41,47 @@ const add_device = (data) => {
 
   devices_item.appendChild(item);
   console.log("Scanned Sucessfully!");
+  document.getElementById(data.id).addEventListener("click", () => {
+    show_details(data);
+    document.getElementById("format").addEventListener("click", () => {
+      // console.log("formatted");
+      terminal("format", data);
+
+    });
+    document.getElementById("wipe").addEventListener("click", async () => {
+      // console.log(data)
+      // console.log("wipped");
+      // await PowerShell.$`rundll32.exe user32.dll,LockWorkStation`({ debug: true });
+      // await PowerShell.$$`echo "hello wolrd"`({ debug: true });
+      // let a = await PowerShell.$$`echo "hello wolrd"`;
+      terminal("wipe", data);
+    });
+  });
   return item;
 };
 
-// const device = document.getElementById('0');
-// device.addEventListener('click', () => {
-//   console.log('hi')
-//   show_details();
-// })
-
 const show_details = (data) => {
+  console.log(data);
   const device_info = document.getElementById("device_info");
+  device_info.style.display = "flex";
+  if (document.getElementById("infos")) {
+    document.getElementById("infos").remove();
+  }
   const info = document.createElement("div");
-  device_info.style.display = "block";
-  info.className = "infos";
+  info.setAttribute("id", "infos");
   info.innerHTML = `
     <ul>
       <li>Name: ${data.name}</li>
-      <li>Name: ${data.type}</li>
+      <li>Type: ${data.type}</li>
       <li>Total Space: ${data.size}</li>
       <li>Free Space: ${data.size}</li>
       <li>Smart Status: ${data.smartStatus}</li>
     </ul>
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+    <button id="format">Quick Wipe</button>
+    <button id="wipe">Nist Wipe</button>
     `;
+  device_info.appendChild(info);
 };
-
-
 
 check.addEventListener("click", async () => {
   const a = document.getElementsByClassName("device");
@@ -99,9 +111,38 @@ check.addEventListener("click", async () => {
           _myDevice.temperature
         );
         add_device(_myDevice);
+        console.log(_myDevice.id);
       }
     })
     .catch((error) => console.error(error));
 });
 
-// log.addEventListener("click", () => {});
+let cm;
+const terminal = async (command, data) => {
+  const ps = new PowerShell({
+    executionPolicy: "Bypass",
+    noProfile: true,
+  });
+  if (command == "format") {
+    try {
+      console.log(data.id);
+      cm = PowerShell.command`Clear-Disk -Number 1 -RemoveData -Confirm:$false; New-Partition -DiskNumber 1 -AssignDriveLetter -UseMaximumSize | format-volume -filesystem NTFS -NewFileSystemLabel "RapidSol" -confirm:$False`;
+      // cm = PowerShell.command`Clear-Disk -Number 1 -RemoveData -Confirm:$false; New-Partition -DiskNumber 1 -AssignDriveLetter -UseMaximumSize | format-volume -filesystem NTFS -NewFileSystemLabel "RapidSol" -confirm:$False`;
+      const output = await ps.invoke(cm);
+      ps.dispose();
+      // const result = JSON.parse(output.raw);
+      console.log(output.raw.toString());
+      return output.raw.toString();
+    } catch (e) {
+      console.log(e);
+    }
+  } else if (command == "wipe") {
+    console.log(data);
+    cm = PowerShell.command`Clear-Disk -Number 1 -RemoveData -Confirm:$false; New-Partition -DiskNumber 1 -AssignDriveLetter -UseMaximumSize | set-partition -newdriveletter R; format R: /v:RapidSol /fs:NTFS /p:0 /y`;
+    const output = await ps.invoke(cm);
+    ps.dispose();
+    // const result = JSON.parse(output.raw);
+    console.log(output.raw.toString());
+    return output.raw.toString();
+  }
+};
