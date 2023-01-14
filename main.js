@@ -9,7 +9,7 @@ let mainWindow = null;
 app.setLoginItemSettings({
   openAtLogin: false,
 });
-
+app.disableHardwareAcceleration();
 function createWindow() {
   mainWindow = new BrowserWindow({
     resizable: true,
