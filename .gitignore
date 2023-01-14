@@ -1,2 +1,4 @@
 /node_modules
 /systeminformation-master
+test.js
+*.log
